@@ -2,7 +2,7 @@ var fs = require("fs");
 module.exports.handler = async function (event, context) {
   console.log("queryStringParameters", event.queryStringParameters);
 
-  var files = fs.readdirSync('../src/pages');
+  var files = fs.readdirSync('/');
 
   return {
     // return null to show no errors
