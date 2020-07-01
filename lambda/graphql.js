@@ -1,15 +1,15 @@
-const { graphql } = require("gatsby");
+var fs = require("fs");
+module.exports.handler = async function (event, context) {
+  console.log("queryStringParameters", event.queryStringParameters);
 
-export const pageQuery = graphql`
-  query($slug: String!) {
-    markdownRemark(frontmatter: { slug: { eq: $slug } }) {
-      html
-      frontmatter {
-        slug
-        title
-      }
-    }
-  }
-`;
+  var files = fs.readdirSync('../src/pages');
 
-return pageQuery;
+  return {
+    // return null to show no errors
+    statusCode: 200, // http status code
+    body: JSON.stringify({
+      msg: "Hello, World! This is better " + Math.round(Math.random() * 10),
+      files: files,
+    }),
+  };
+};
