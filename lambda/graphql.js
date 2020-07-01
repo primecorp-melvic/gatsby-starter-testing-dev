@@ -1,4 +1,4 @@
-import { graphql } from "gatsby";
+const { graphql } = require("gatsby");
 
 export const pageQuery = graphql`
   query($slug: String!) {
